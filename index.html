@@ -1,31 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
 <head>
   <meta charset="UTF-8">
-  <title>我的面试题库</title>
+  <title>面试题库 | 程序员笔记</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="Java后端、数据库、中间件面试题精选">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+  
+  <style>
+    /* 自定义样式：让侧边栏更美观 */
+    .sidebar-nav strong {
+      display: block;
+      margin-top: 15px;
+      color: #2c3e50;
+    }
+  </style>
 </head>
 <body>
   <div id="app">加载中...</div>
   <script>
     window.$docsify = {
       name: '面试题笔记',
-      repo: 'https://github.com/AusnUnia/ausnunia.github.io', // 你的 Github 仓库地址
-      loadSidebar: true, // 开启侧边栏
-      subMaxLevel: 3,    // 侧边栏层级
-      auto2top: true,    // 切换页面自动回到顶部
-      search: 'auto',    // 开启搜索功能
-      copyCode: {
-        buttonText: '复制',
-        errorText: '错误',
-        successText: '复制成功'
-      }
+      repo: '', // 如果想在右上角展示 Github 图标，这里填仓库 URL
+      
+      // 侧边栏配置
+      loadSidebar: true,
+      subMaxLevel: 3,    // 自动抓取 Markdown 里的 ## 标题展示在侧边栏
+      
+      // 路由配置：解决子目录找不到侧边栏的问题
+      alias: {
+        '/.*/_sidebar.md': '/_sidebar.md'
+      },
+      
+      // 搜索配置
+      search: {
+        maxAge: 86400000,
+        paths: 'auto',
+        placeholder: '搜索题目...',
+        noData: '未找到结果',
+        depth: 6
+      },
+      
+      // 样式配置
+      auto2top: true, // 切换页面后自动回到顶部
     }
   </script>
+
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+  
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+  
   <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-java.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-sql.min.js"></script>
+  
   <script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
+  
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
 </body>
 </html>
