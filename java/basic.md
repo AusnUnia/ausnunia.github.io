@@ -18,3 +18,6 @@
 > 4.如果桶既不为空,也没有在扩容都，则用 synchronized 加锁,之后判断是链表或者树插入数据(和HashMap一样)。</br>
 > 5.插入完成后，如果桶内链表长度达到 8，且数组总长度达到 64，则将链表转化为红黑树，以提高查询效率。</br>
 > 6.最后调用 addCount() 方法更新元素个数。如果达到扩容阈值，则触发扩容流程。</br>
+> ##### 为什么ConcurrentHashMap中使用 synchronized 而不是 ReentrantLock？
+> 1.减少内存开销：ReentrantLock 需要继承 AbstractQueuedSynchronizer (AQS)，每个对象都需要额外的内存空间。而 synchronized 是原生指令，且锁信息存在对象头中。
+> 2.低竞争下的性能：在大多数情况下，不同线程访问同一个桶的概率极低。synchronized 在这种“无竞争”或“低竞争”的状态下，经过 JVM 的偏向锁、轻量级锁优化，性能已经不输甚至超过了 ReentrantLock。
