@@ -21,6 +21,37 @@
       max-width: 800px; /* 面试题阅读最舒适的宽度 */
       margin: 0 auto;
     }
+    /* 1. 控制正文字体和行高（阅读面试题不累眼） */
+    section.content {
+      font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.8;
+      font-size: 16px;
+      color: #34495e;
+    }
+    /* 2. 给标题加点颜色和间距 */
+    .markdown-section h1 { font-size: 2rem; color: #2c3e50; margin-top: 50px; }
+    .markdown-section h2 { 
+      font-size: 1.5rem; 
+      color: #42b983; /* 经典的 Vue 绿，你可以换成程序员蓝 #007bff */
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+      margin-top: 40px;
+    }
+    .markdown-section h3 { font-size: 1.25rem; margin-top: 30px; }
+  
+    /* 3. 让代码块看起来更高级 */
+    code {
+      background-color: #f8f8f8;
+      color: #e96900;
+      padding: 3px 5px;
+      border-radius: 3px;
+      margin: 0 2px;
+    }
+    pre code {
+      background-color: #f8f8f8 !important;
+      color: #525252 !important;
+      padding: 1.2em !important;
+    }
   </style>
 </head>
 <body>
