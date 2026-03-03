@@ -21,3 +21,17 @@
 > ##### 为什么ConcurrentHashMap中使用 synchronized 而不是 ReentrantLock？
 > 1.减少内存开销：ReentrantLock 需要继承 AbstractQueuedSynchronizer (AQS)，每个对象都需要额外的内存空间。而 synchronized 是原生指令，且锁信息存在对象头中。
 > 2.低竞争下的性能：在大多数情况下，不同线程访问同一个桶的概率极低。synchronized 在这种“无竞争”或“低竞争”的状态下，经过 JVM 的偏向锁、轻量级锁优化，性能已经不输甚至超过了 ReentrantLock。
+
+> ## Java 编译与运行机制
+> 1.编译期：从 .java(源代码) 到 .class(字节码)</br>
+> 2.运行期：从 .class(字节码) 到机器码</br>
+> A. 类加载 (Class Loading)</br>
+> JVM 的类加载器将 .class 文件加载到内存中，并进行安全校验，确保代码没有被恶意篡改。  </br>
+> B. 解释执行 (Interpreting)</br>
+>  在程序启动初期，解释器（Interpreter） 会逐行读取字节码并将其翻译成当前操作系统的机器码。</br>
+> 优点：启动快，不需要等待编译。</br>
+> 缺点：运行效率低，因为同一段循环代码每次执行都要重新翻译。</br>
+> C. JIT 即时编译 (Just-In-Time Compilation)</br>
+> 这是 Java 性能飙升的关键。当 JVM 发现某段代码（如一个方法或循环）运行得非常频繁时，会将其标记为 “热点代码”。</br>
+> JIT 编译器 会直接把这些热点代码编译成底层的 本地机器码，并存入代码缓存（Code Cache）。</br>
+> 下次执行这段代码时，CPU 直接运行机器码，速度与 C++ 程序几乎无异。</br>
