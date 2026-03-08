@@ -6,7 +6,7 @@
   * [JDK21](java/jdk21.md)
 * **数据库**
   * [MySQL](db/mysql.md)
-  * [ClickHouse](db/redis.md)
+  * [ClickHouse](db/clickhouse.md)
   * [Hive](db/hive.md)
 * **中间件**
   * [Redis](middleware/redis.md)
